@@ -9,7 +9,6 @@ module.exports = {
     static:{
       directory:path.join(__dirname,'/public'),
       watch:true,
-      open:true
       },
     port:3000,
     historyApiFallback:true,
