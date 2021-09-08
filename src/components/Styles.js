@@ -87,7 +87,8 @@ export const StyledTextInput = styled.input`
   padding-left: 50px;
   font-size: 17px;
   letter-spacing: 1px;
-  color: ${colors.light2};
+  color: ${colors.dark1};
+  background-color: ${colors.light2};
   border:0;
   outline: 0;
   display: block;
@@ -131,4 +132,42 @@ padding: 10px;
   color: ${colors.primary};
   cursor: pointer;
 }
+`;
+
+export const ErrorMsg = styled.div`
+  font-size: 11px;
+  color: ${colors.red};
+  margin-top: -5px;
+  margin-bottom: 10px;
+  text-align: left;
+`;
+
+export const ExtraText = styled.p`
+  font-size:${(props) => props.size}15px;
+  text-align: center;
+  color: ${(props) => (props.color? props.color : colors.dark2)};
+  padding: 2px;
+  margin-top: 10px;
+`;
+
+export const TextLink = styled(Link)`
+text-decoration: none;
+color: ${colors.theme};
+transition: ease-in-out 0.3s;
+
+&:hover { 
+  text-decoration: underline;
+  letter-spacing: 2px;
+  font-weight: bold;
+
+}
+`;
+
+export const StyledIcon = styled.p`
+  color: ${colors.dark1};
+  position: absolute;
+  font-size: 21px;
+  top: 35px;
+  ${(props) => props.right && `right: 15px;`}
+  ${(props) => !props.right && `left: 15px;`}
 `;

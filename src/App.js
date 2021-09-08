@@ -5,11 +5,9 @@ import Login from "./pages/Login";
 
 import { StyledContainer } from "./components/Styles";
 
-import{
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from 'react-router-dom';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+
+import{BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 function App() {
   return (
