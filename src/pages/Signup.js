@@ -18,25 +18,28 @@ import {Formik, Form} from "formik";
 import {TextInput} from "../components/FormLib";
 import * as Yup from 'yup';
 
-import {FiMail,FiLock} from 'react-icons/fi';
+import {FiMail,FiLock, FiUser, FiCalendar} from 'react-icons/fi';
 
 import Loader from "react-loader-spinner";
 
 import { connect } from "react-redux";
-import {LoginUser} from "./../auth/actions/userActions";
+import {signupUser} from "./../auth/actions/userActions";
 import { useHistory } from "react-router-dom";
 
-const Login = ({LoginUser}) => {
-  const history = userHistory();
+const Signup = (signupUser) => {
+  const history = useHistory();
   return(
     <div>
       <StyledFormArea>
         <Avatar image={Logo}/>
-        <StyledTitle color={colors.theme} size={30}>Member Login</StyledTitle>
+        <StyledTitle color={colors.theme} size={30}>Member Signap</StyledTitle>
         <Formik
           initialValues = {{
             Email: "",
             password: "",
+            repeatPassword: "",
+            dateOfBirth: "",
+            name: ""
           }}
           validationSchema = {
             Yup.object({
@@ -46,15 +49,24 @@ const Login = ({LoginUser}) => {
               .min(8, "Password is too short")
               .max(30, "Password is too long")
               .required("Required"),
+              name: Yup.string().required("Required"),
+              dateOfBirth: Yup.date().required("Required"),
+              repeatPassword: Yup.string().required("Required").oneOf([Yup.ref("password")],"Password must much")
             })
           }
-          onSubmit = {(values,{setSubmitting,setFieldError}) => {
-            console.log(values);
-            loginUser(values,history,setFieldError, setSubmitting);
+          onSubmit = {(values,{setSubmitting, setFieldError}) => {
+           signupUser(values, history, setFieldError, setSubmitting);
           }}
         >
           {({isSubmitting}) => (
             <Form>
+              <TextInput 
+                name = "name"
+                type = "text"
+                label = "Full Name"
+                placeholder = "Tarankevich Dmitriy"
+                icon = {<FiUser/>}
+              />
               <TextInput 
                 name = "email"
                 type = "text"
@@ -63,15 +75,21 @@ const Login = ({LoginUser}) => {
                 icon = {<FiMail/>}
               />
               <TextInput 
-                name = "password"
+                name = "dateOfBirth"
+                type = "date"
+                label = "Date of Birth"
+                icon = {<FiCalendar/>}
+                />
+                 <TextInput 
+                name = "repeatPassword"
                 type = "password"
-                label = "Password"
+                label = "Repeat Password"
                 placeholder = "********"
                 icon = {<FiLock/>}
                 />
                 <ButtonGroup>
                   {!isSubmitting && <StyledFormButton 
-                  type = "submit"> Login </StyledFormButton>}
+                  type = "submit"> Signup </StyledFormButton>}
 
                   {isSubmitting && (
                     <Loader
@@ -86,11 +104,11 @@ const Login = ({LoginUser}) => {
           )}
         </Formik>
         <ExtraText>
-          New here? <TextLink to="/signup">Signup</TextLink>  
+          Already have an account? <TextLink to="/login">Login</TextLink>  
         </ExtraText>
       </StyledFormArea>
     </div>
   )   
 }
 
-export default connect(null, {LoginUser})(Login);
+export default connect(null,{signupUser})(Signup);

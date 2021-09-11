@@ -1,4 +1,3 @@
-
 import {StyledTitle, StyledSubTitle, Avatar, StyledButton,ButtonGroup} 
 from './../components/Styles';
 import React from "react";
