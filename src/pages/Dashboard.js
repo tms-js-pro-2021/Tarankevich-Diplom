@@ -26,8 +26,8 @@ const Dashboard= () => {
         justifyContent: "flex-start",
       }}>
         <Avatar image={Logo} />
-      </div>
-      <StyledFormArea bg={colors.dark2}>
+    </div>
+      <StyledFormArea bg={colors.aliceblue}>
           <StyledTitle size={65}>
             Хоккейный магазин
           </StyledTitle>
@@ -35,7 +35,6 @@ const Dashboard= () => {
             <StyledButton to= "#">Logout</StyledButton>
           </ButtonGroup>
       </StyledFormArea>
-      
     </div>
   )
 };

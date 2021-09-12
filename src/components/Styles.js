@@ -4,13 +4,14 @@ import {Link} from "react-router-dom";
 
 export const colors = {
   primary: "#000000",
-  theme: "#BE185D",
+  theme: "#00FFFF",
   light1: "#F3F4F6",
   light2: "#E5E7EB",
   dark1: "#1F2937",
   dark2: "#4B5563",
   dark3: "#9CA3AF",
-  red: "#DC2626",
+  red: "#00BFFF",
+  aliceblue: "#F0F8FF"
 };
 
 export const StyledContainer = styled.div`
@@ -32,7 +33,7 @@ export const StyledContainer = styled.div`
 export const StyledTitle = styled.h2`
   font-size: ${(props) => props.size}px;
   text-align: center;
-  color: ${(props) => props.color ? props.color : colors.primary};
+  color: ${colors.aliceblue};
   padding: 5px;
   margin-bottom: 20px;
 `;
@@ -60,16 +61,16 @@ export const StyledButton = styled(Link)`
   width: 150px;
   background-color: transparent;
   font-size: 16px;
-  border: 3px solid ${colors.primary};
+  border: 3px solid ${colors.aliceblue};
   border-radius: 25px;
-  color:${colors.primary};
+  color:${colors.aliceblue};
   text-decoration: none;
   text-align: center;
   transition: ease-in-out 0.3s;
 
 &:hover{
-  background-color: ${colors.primary};
-  color: ${colors.theme};
+  background-color: ${colors.light1};
+  color: ${colors.primary};
   cursor: pointer;
 }
 `;
@@ -87,9 +88,11 @@ export const StyledTextInput = styled.input`
   padding-left: 50px;
   font-size: 17px;
   letter-spacing: 1px;
+  color: black;
   color: ${colors.dark1};
+  /* background-color: transparent; */
   background-color: ${colors.light2};
-  border:0;
+  border-radius:60px;
   outline: 0;
   display: block;
   margin: 5px auto 10px auto;
@@ -108,13 +111,15 @@ export const StyledLabel = styled.p`
   text-align:left;
   font-size: 13px;
   font-weight: bold;
+  color:${colors.aliceblue}
 `;
 
 export const StyledFormArea = styled.div`
-  background-color: ${props => props.bg ||
-  colors.light1};
+  /* background-color: ${props => props.bg ||
+  colors.light1}; */
   text-align: center;
   padding: 45px 55px;
+  background-color: transparent;
 `;
 
 export const StyledFormButton = styled.button`
@@ -145,7 +150,7 @@ export const ErrorMsg = styled.div`
 export const ExtraText = styled.p`
   font-size:${(props) => props.size}15px;
   text-align: center;
-  color: ${(props) => (props.color? props.color : colors.dark2)};
+  color: ${colors.aliceblue};
   padding: 2px;
   margin-top: 10px;
 `;

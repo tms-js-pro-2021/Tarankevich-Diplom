@@ -32,7 +32,7 @@ const Signup = (signupUser) => {
     <div>
       <StyledFormArea>
         <Avatar image={Logo}/>
-        <StyledTitle color={colors.theme} size={30}>Member Signap</StyledTitle>
+        <StyledTitle color={colors.theme} size={30}></StyledTitle>
         <Formik
           initialValues = {{
             Email: "",

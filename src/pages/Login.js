@@ -23,16 +23,15 @@ import {FiMail,FiLock} from 'react-icons/fi';
 import Loader from "react-loader-spinner";
 
 import { connect } from "react-redux";
-import {LoginUser} from "./../auth/actions/userActions";
-import { useHistory } from "react-router-dom";
+import {loginUser} from "./../auth/actions/userActions";
+import {useHistory} from "react-router-dom";
 
-const Login = ({LoginUser}) => {
-  const history = userHistory();
+const Login = () => {
   return(
     <div>
       <StyledFormArea>
         <Avatar image={Logo}/>
-        <StyledTitle color={colors.theme} size={30}>Member Login</StyledTitle>
+        <StyledTitle color={colors.theme} size={30}></StyledTitle>
         <Formik
           initialValues = {{
             Email: "",
@@ -58,7 +57,7 @@ const Login = ({LoginUser}) => {
               <TextInput 
                 name = "email"
                 type = "text"
-                label = "Email Address"
+                label = "Email"
                 placeholder = "Dtarankevich@mail.ru"
                 icon = {<FiMail/>}
               />
@@ -93,4 +92,6 @@ const Login = ({LoginUser}) => {
   )   
 }
 
-export default connect(null, {LoginUser})(Login);
+export default Login;
+
+// connect(null, {loginUser})(Login)
