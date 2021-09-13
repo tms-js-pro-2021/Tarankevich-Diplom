@@ -1,12 +1,11 @@
 import {StyledTitle, StyledSubTitle, Avatar, StyledButton,ButtonGroup} 
 from './../components/Styles';
 import React from "react";
-
 import Logo from "./../assets/logo.jpg";
 
 const Home= () => {
   return (
-    <div>
+    <div > 
       <div style = {{
         position: "absolute",
         top: 0,

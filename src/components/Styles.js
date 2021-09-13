@@ -30,6 +30,7 @@ export const StyledContainer = styled.div`
   text-transform: capitalize;
 `;
 
+
 export const StyledTitle = styled.h2`
   font-size: ${(props) => props.size}px;
   text-align: center;
@@ -90,7 +91,7 @@ export const StyledTextInput = styled.input`
   letter-spacing: 1px;
   color: black;
   color: ${colors.dark1};
-  /* background-color: transparent; */
+  background-color: transparent;
   background-color: ${colors.light2};
   border-radius:60px;
   outline: 0;
@@ -115,8 +116,8 @@ export const StyledLabel = styled.p`
 `;
 
 export const StyledFormArea = styled.div`
-  /* background-color: ${props => props.bg ||
-  colors.light1}; */
+  background-color: ${props => props.bg ||
+  colors.light1}; 
   text-align: center;
   padding: 45px 55px;
   background-color: transparent;

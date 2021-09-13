@@ -1,96 +1,108 @@
 import React from "react";
-import {StyledTextInput, 
-  StyledFormArea, 
-  StyledFormButton, 
+import Axios from "axios";
+import {
+  StyledTextInput,
+  StyledFormArea,
+  StyledFormButton,
   StyledLabel,
   Avatar,
   StyledTitle,
   colors,
   ButtonGroup,
   ExtraText,
-  TextLink
+  TextLink,
+} from "./../components/Styles";
 
-} from './../components/Styles';
+import Logo from "./../assets/logo.jpg";
 
-import Logo from './../assets/logo.jpg'
+import { Formik, Form } from "formik";
+import { TextInput } from "../components/FormLib";
+import * as Yup from "yup";
 
-import {Formik, Form} from "formik";
-import {TextInput} from "../components/FormLib";
-import * as Yup from 'yup';
-
-import {FiMail,FiLock} from 'react-icons/fi';
+import { FiMail, FiLock } from "react-icons/fi";
 
 import Loader from "react-loader-spinner";
 
 import { connect } from "react-redux";
-import {loginUser} from "./../auth/actions/userActions";
-import {useHistory} from "react-router-dom";
+import { loginUser } from "./../auth/actions/userActions";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
-  return(
+  return (
     <div>
       <StyledFormArea>
-        <Avatar image={Logo}/>
+        <Avatar image={Logo} />
         <StyledTitle color={colors.theme} size={30}></StyledTitle>
         <Formik
-          initialValues = {{
-            Email: "",
-            password: "",
+          initialValues={{
+            email: "dima@gmail.com",
+            password: "test123",
           }}
-          validationSchema = {
-            Yup.object({
-              email : Yup.string().email("Invalid email address")
+          validationSchema={Yup.object({
+            email: Yup.string()
+              .email("Invalid email address")
               .required("Required"),
-              password : Yup.string()
-              .min(8, "Password is too short")
+            password: Yup.string()
+              .min(1, "Password is too short")
               .max(30, "Password is too long")
               .required("Required"),
-            })
-          }
-          onSubmit = {(values,{setSubmitting,setFieldError}) => {
-            console.log(values);
-            loginUser(values,history,setFieldError, setSubmitting);
+          })}
+          onSubmit={(values, { setSubmitting, setFieldError }) => {
+            loginUser(Axios, values, history, setFieldError, setSubmitting);
           }}
         >
-          {({isSubmitting}) => (
-            <Form>
-              <TextInput 
-                name = "email"
-                type = "text"
-                label = "Email"
-                placeholder = "Dtarankevich@mail.ru"
-                icon = {<FiMail/>}
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            isSubmitting,
+          }) => (
+            <Form onSubmit={handleSubmit}>
+              <TextInput
+                name="email"
+                type="text"
+                label="Email"
+                placeholder="Dtarankevich@mail.ru"
+                icon={<FiMail />}
+                onChange={handleChange}
+                value={values.email}
               />
-              <TextInput 
-                name = "password"
-                type = "password"
-                label = "Password"
-                placeholder = "********"
-                icon = {<FiLock/>}
-                />
-                <ButtonGroup>
-                  {!isSubmitting && <StyledFormButton 
-                  type = "submit"> Login </StyledFormButton>}
+              <TextInput
+                name="password"
+                type="password"
+                label="Password"
+                placeholder="********"
+                icon={<FiLock />}
+                onChange={handleChange}
+                value={values.password}
+              />
+              <ButtonGroup>
+                {!isSubmitting && (
+                  <StyledFormButton type="submit"> Login </StyledFormButton>
+                )}
 
-                  {isSubmitting && (
-                    <Loader
-                        type = "ThreeDots"
-                        color = {colors.theme}
-                        height= {49}
-                        width= {100}
-                        />
-                  )}
-                </ButtonGroup>
+                {isSubmitting && (
+                  <Loader
+                    type="ThreeDots"
+                    color={colors.theme}
+                    height={49}
+                    width={100}
+                  />
+                )}
+              </ButtonGroup>
             </Form>
           )}
         </Formik>
         <ExtraText>
-          New here? <TextLink to="/signup">Signup</TextLink>  
+          New here? <TextLink to="/signup">Signup</TextLink>
         </ExtraText>
       </StyledFormArea>
     </div>
-  )   
-}
+  );
+};
 
 export default Login;
 

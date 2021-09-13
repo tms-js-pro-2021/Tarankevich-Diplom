@@ -35,17 +35,3 @@ function App() {
 
 export default App;
 
-
-
-// <Router>
-//       <StyledContainer>
-//         <Switch>
-//           <Route path="/signup">
-//           <Signup/>
-//           </Route>
-//           <Route path="/">
-//           <Home/>
-//           </Route>
-//         </Switch>
-//       </StyledContainer>
-//     </Router>
