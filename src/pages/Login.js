@@ -26,9 +26,11 @@ import Loader from "react-loader-spinner";
 import { connect } from "react-redux";
 import { loginUser } from "./../auth/actions/userActions";
 import { useHistory } from "react-router-dom";
+import { StyledContainer } from "../components/Styles";
 
 const Login = () => {
   return (
+    <StyledContainer>
     <div>
       <StyledFormArea>
         <Avatar image={Logo} />
@@ -101,6 +103,8 @@ const Login = () => {
         </ExtraText>
       </StyledFormArea>
     </div>
+    </StyledContainer>
+
   );
 };
 

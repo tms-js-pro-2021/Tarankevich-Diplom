@@ -31,6 +31,7 @@ const Dashboard= () => {
           <StyledTitle size={65}>
             Хоккейный магазин
           </StyledTitle>
+        
           <ButtonGroup>
             <StyledButton to= "#">Logout</StyledButton>
           </ButtonGroup>
