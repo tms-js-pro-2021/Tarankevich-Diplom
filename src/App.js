@@ -13,7 +13,7 @@ import{BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 function App() {
   return (
     <Router>
-      <StyleDashboard>
+      {/* <StyleDashboard> */}
         <Switch>
           <Route path="/signup">
             <Signup/>
@@ -28,7 +28,7 @@ function App() {
             <Home/>
           </Route>
         </Switch>
-      </StyleDashboard>
+      {/* </StyleDashboard> */}
     </Router>
   );
 }
