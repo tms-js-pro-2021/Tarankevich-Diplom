@@ -97,14 +97,14 @@ const Footer = () => {
         <List>
           <ListItem>Home</ListItem>
           <ListItem>Cart</ListItem>
-          <ListItem>Man Fashion</ListItem>
-          <ListItem>Woman Fashion</ListItem>
+          <ListItem>Rookie Year</ListItem>
+          <ListItem>Team & Corporate Sales</ListItem> 
           <ListItem>Accessories</ListItem>
-          <ListItem>My account</ListItem>
-          <ListItem>Order Tracking</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Terms</ListItem>
+          <ListItem>My AccountT</ListItem>
+          <ListItem>Gift Cards</ListItem>
+          <ListItem>Price Policy</ListItem>
+          <ListItem>Returns</ListItem> 
+          <ListItem>Sizing Help</ListItem> 
         </List>
       </Center>
       <Right>

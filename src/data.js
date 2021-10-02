@@ -4,7 +4,7 @@ export const sliderItems = [
     id: 1,
     img:"https://cdn.shopify.com/s/files/1/0020/1585/4658/files/Flylite_Stick_-_HBS_Wide_Sub_Banner.jpg?v=1627675692",
     title: "Summer Sale",
-    desc: "dont me",
+    desc: "Hockey Starts Here",
     bg:"#E0FFFF",
   },
 
@@ -12,16 +12,16 @@ export const sliderItems = [
     id: 2,
     img:"https://broncolor.swiss/assets/img/Stories/Inspiration/Catalog-Shoot-for-Fischer-Sports-Hockey-%E2%80%93-Image-campaign/_contentWithShareBar33/ice-hockey-1.jpg",
     title: "Summer Sale",
-    desc: "dont me",
-    bg:"#98FB98",
+    desc: "Hockey Starts Here",
+    bg:"#E0FFFF",
   },
   
   {
     id: 3,
     img:"https://broncolor.swiss/assets/img/Stories/Inspiration/Catalog-Shoot-for-Fischer-Sports-Hockey-%E2%80%93-Image-campaign/_contentWithShareBar33/ice-hockey-10.jpg",
-    title: "Sum",
-    desc: "dont me",
-    bg:"#ADD8E6",
+    title: "Summer Sale",
+    desc: "Hockey Starts Here",
+    bg:"#E0FFFF",
   }
 ]
 
