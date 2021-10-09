@@ -174,7 +174,7 @@ const Cart = () => {
           <Info>
             <Product>
               <ProductDetail>
-                <Image src="https://cdn.shopify.com/s/files/1/0020/1585/4658/products/pens-outerstuff-front_5291f92c-f8e9-4278-bf36-c5b6bef3b088_540x.jpg?v=1610653635"/>
+                <Image src="https://cdn.shopify.com/s/files/1/0020/1585/4658/products/SKL-CCM-RIBCORE-SILVER-SR-MAIN-8473_68abe300-a38c-4b58-87b2-936c5390a826_360x.jpg?v=1610654549"/>
                 <Details>
                   <ProductName><b>Product: </b>Pittsburgh Penguins Home Jersey</ProductName>
                   <ProductId><b>ID: </b>95422325595</ProductId>

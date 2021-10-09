@@ -25,7 +25,7 @@ export let state = {
      size: "M",
      price: "32$",
      amount: 1,
-     image: "https://cdn.shopify.com/s/files/1/0020/1585/4658/products/SKL-BAUER-VAPOR-X-VELOCITY-PRO-SR-MAIN-8462_898f6ce9-b99a-4040-8f8e-63a9299fe31e_360x.jpg?v=1610651052"},
+     image: "https://cdn.shopify.com/s/files/1/0020/1585/4658/products/gloves-true-xc5-sr-bk-main-1389_360x.jpg?v=1632510477"},
     
      
      {id: 4,
@@ -35,7 +35,7 @@ export let state = {
      size: "M",
      price: "12$",
      amount: 1,
-     image: "https://cdn.shopify.com/s/files/1/0020/1585/4658/products/SKL-BAUER-VAPOR-X-VELOCITY-PRO-SR-MAIN-8462_898f6ce9-b99a-4040-8f8e-63a9299fe31e_360x.jpg?v=1610651052"},
+     image: "https://cdn.shopify.com/s/files/1/0020/1585/4658/products/glove-bauer-x900-lite-bk-main-dealer_360x.jpg?v=1610584414"},
 
      
      {id: 5,
@@ -55,7 +55,7 @@ export let state = {
      size: "M",
      price: "100$",
      amount: 1,
-     image: "https://cdn.shopify.com/s/files/1/0020/1585/4658/products/SKL-BAUER-VAPOR-X-VELOCITY-PRO-SR-MAIN-8462_898f6ce9-b99a-4040-8f8e-63a9299fe31e_360x.jpg?v=1610651052"},
+     image: "https://cdn.shopify.com/s/files/1/0020/1585/4658/products/ft3seniorstickmain_360x.jpg?v=1633124594"},
 
      
      {id: 7,
@@ -75,6 +75,6 @@ export let state = {
      size: "M",
      price: "456$",
      amount: 1,
-     image: "https://cdn.shopify.com/s/files/1/0020/1585/4658/products/SKL-BAUER-VAPOR-X-VELOCITY-PRO-SR-MAIN-8462_898f6ce9-b99a-4040-8f8e-63a9299fe31e_360x.jpg?v=1610651052"},
+     image:"https://cdn.shopify.com/s/files/1/0020/1585/4658/products/bauer-2spro-nhl-senior-elbow-main_360x.jpg?v=1632350900"},
     ]
-    }
+  }

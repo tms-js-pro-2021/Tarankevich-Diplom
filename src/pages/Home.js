@@ -24,7 +24,7 @@ const Home= () => {
         Хоккейный магазин
       </StyledTitle>
       <StyledSubTitle size={27}>
-        Войди,чтобы увидеть лучшую хоккейную одежду
+        
       </StyledSubTitle>
       <ButtonGroup>
         <StyledButton to= "/login">Login</StyledButton>
