@@ -1,6 +1,8 @@
 import { FavoriteBorderOutlined, SearchOutlined, ShoppingCartOutlined } from "@material-ui/icons";
 import styled from "styled-components";
 import React from "react";
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 const Info = styled.div`
 opacity: 0;
@@ -64,20 +66,26 @@ transition: all 0.5s ease;
  }
 `;
 
-const Product = ({item}) => {
+const Product = (props) => {
+  const [like, setLike] = useState(false)
+  const addLike = () => {
+    setLike(!like)
+  }
+  const styleLikedIcon = {color: "red"}
+  const styleIcon = {color: "black"}
   return (
     <Container>
       <Circle/>
-      <Image src= {item.img}/>
+      <Image src= {props.img}/>
       <Info>
         <Icon>
-          <ShoppingCartOutlined/>
+          <NavLink to={"/cart"}><ShoppingCartOutlined/></NavLink>
         </Icon>
         <Icon>
-          <SearchOutlined/>
+        <NavLink to={'/product'} onClick={() => {props.openCart(props.id)}}><SearchOutlined ></SearchOutlined></NavLink>
         </Icon>
         <Icon>
-          <FavoriteBorderOutlined/>
+          <FavoriteBorderOutlined onClick={addLike} style={like ? styleLikedIcon: styleIcon}/>
         </Icon>
       </Info>
     </Container>

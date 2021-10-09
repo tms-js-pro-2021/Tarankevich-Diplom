@@ -9,11 +9,12 @@ display: grid;
 grid-template-columns: repeat(4, 1fr);
 `;
 
-const Products = () => {
+const Products = (props) => {
   return (
     <Container>
-      {popularProducts.map(item=>(
-        <Product item={item} key={item.id}/>
+      {props.items.map(item=>(
+        //<Product item={item} key={item.id}/>
+        <Product img={item.image} key={item.id} id={item.id} openCart={props.openCart}/>
       ))}
     </Container>
   )

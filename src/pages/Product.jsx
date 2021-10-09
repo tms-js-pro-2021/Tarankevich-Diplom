@@ -19,8 +19,7 @@ flex: 1;
 `;
 
 const Image = styled.img`
-width: 100%;
-height: 90vh;
+width: 50%;
 object-fit: cover;
 `;
 
@@ -113,19 +112,19 @@ font-weight: 500;
 
 
 
-const Product = () => {
+const Product = (props) => {
   return (
     <Container>
       <Navbar/>
       <Announcement/>
       <Wrapper>
         <ImgContainer>
-          <Image src = "https://cdn.shopify.com/s/files/1/0020/1585/4658/products/pens-outerstuff-both_78cc8a8c-e49a-49f8-b8a8-987c7964fcdc_720x.jpg?v=1610653635"/>
+          <Image src = {props.items.image}/>
         </ImgContainer>
         <InfoContainer>
           <Title>Pittsburgh Penguins</Title>
           <Desc>Home Outer Stuff Replica Youth Jersey</Desc>
-          <Price>$79.99</Price>
+          <Price>{props.items.price}</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>

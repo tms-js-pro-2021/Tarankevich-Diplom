@@ -33,7 +33,7 @@ margin-right: 20px;
 `;
 const Option = styled.option``;
 
-const ProductList = () => {
+const ProductList = (props) => {
   return (
     <Container>
       <Navbar/>
@@ -72,7 +72,7 @@ const ProductList = () => {
           </Select>
         </Filter>
       </FilterContainer>
-      <Products/>
+      <Products items={props.items} openCart={props.openCart}/>
       <Newsletter/>
       <Footer/>
     </Container>

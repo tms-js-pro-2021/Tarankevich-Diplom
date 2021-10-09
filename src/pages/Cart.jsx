@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import { useState } from "react";
 
 
 const Container = styled.div``;
@@ -154,6 +155,7 @@ color: white;
 
 
 const Cart = () => {
+  const [plusminus, setPlusMinus] = useState(0)
   return (
     <Container>
       <Navbar/>
@@ -182,9 +184,11 @@ const Cart = () => {
               </ProductDetail>
               <PriceDetail>
                 <ProductAmountContainer>
-                  <Add/>
-                  <ProductAmount>2</ProductAmount>
-                  <Remove/>
+                  {/* <Add/> */}
+                  <span style={{cursor: "pointer"}} onClick={()=> {setPlusMinus(plusminus+1)}}> + </span>
+                  <ProductAmount>{plusminus}</ProductAmount>
+                  <span style={{cursor: "pointer"}} onClick={()=> {if(plusminus>0){setPlusMinus(plusminus-1)}}}> - </span>
+                  {/* <Remove/> */}
                 </ProductAmountContainer>
                 <ProductPrice>$ 79.99</ProductPrice>
               </PriceDetail>
