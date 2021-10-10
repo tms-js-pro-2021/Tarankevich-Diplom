@@ -16,6 +16,7 @@ export const colors = {
 
 export const StyledContainer = styled.div`
   margin: 0;
+  width: 100%;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -29,6 +30,21 @@ export const StyledContainer = styled.div`
   text-shadow: 0 2px 5px rgba(0, 0, 0, .2);
   text-transform: capitalize;
 `;
+// export const StyleDashboard = styled.div`
+//   margin: 0;
+//   min-height: 100vh;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   background-size: cover;
+//   background-attachment: fixed;
+//   font-size: 60px;
+//   font-family: "Roboto", sans-serif;
+//   color: black;
+//   text-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+//   text-transform: capitalize;
+// `;
+
 
 export const StyledTitle = styled.h2`
   font-size: ${(props) => props.size}px;
@@ -90,7 +106,7 @@ export const StyledTextInput = styled.input`
   letter-spacing: 1px;
   color: black;
   color: ${colors.dark1};
-  /* background-color: transparent; */
+  background-color: transparent;
   background-color: ${colors.light2};
   border-radius:60px;
   outline: 0;
@@ -115,8 +131,8 @@ export const StyledLabel = styled.p`
 `;
 
 export const StyledFormArea = styled.div`
-  /* background-color: ${props => props.bg ||
-  colors.light1}; */
+  background-color: ${props => props.bg ||
+  colors.light1}; 
   text-align: center;
   padding: 45px 55px;
   background-color: transparent;

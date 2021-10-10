@@ -26,10 +26,14 @@ import { connect } from "react-redux";
 import {signupUser} from "./../auth/actions/userActions";
 import { useHistory } from "react-router-dom";
 
+import { StyledContainer } from "../components/Styles";
+
 const Signup = (signupUser) => {
   const history = useHistory();
   return(
+    <StyledContainer>
     <div>
+      
       <StyledFormArea>
         <Avatar image={Logo}/>
         <StyledTitle color={colors.theme} size={30}></StyledTitle>
@@ -108,6 +112,7 @@ const Signup = (signupUser) => {
         </ExtraText>
       </StyledFormArea>
     </div>
+    </StyledContainer>
   )   
 }
 
