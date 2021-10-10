@@ -20,6 +20,11 @@ export const loginUser = (
           alert("Authentication error!");
         }
       })
+      // .then(({ data: { token } = {} }) => {
+      //   window.sessionStorage.token = token;
+      //   setupApi(token);
+      //   replace('/');
+      // })
       .then((res) => {
         // save credentials here
         if (res.status === 200) {

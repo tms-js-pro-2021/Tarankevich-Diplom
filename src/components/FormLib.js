@@ -10,7 +10,7 @@ import {
 
 import {FiEyeOff, FiEye} from "react-icons/fi";
 
-export const TextInput = ({icon,...props}) => {
+export const TextInput = ({icon,...props}) => {  
   const [field , meta] = useField(props);
   const [show, setShow] = useState(false);
 
