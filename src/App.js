@@ -1,62 +1,55 @@
-import Home from './pages/Home';
-import React from "react";
+import React, { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Signup from "./pages/Registration";
 import Dashboard from "./pages/Dashboard";
-import ProductList from './pages/ProductList';
-import Product from './pages/Product';
-import Cart from './pages/Cart';
-import { state } from './components/State';
-
-import { StyleDashboard } from "./components/Styles";
-
+import Product from "./pages/Product";
+import Cart from "./pages/Cart";
+import Page404 from "./pages/Page404";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-
-import{BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import { useState } from 'react';
-
-
-
+import RouterProvider from "./router/RouterProvider";
 
 function App() {
-  let [object, setObject] = useState(state.items[0])
-  const openCart = (itemId) => {
-     let item = state.items.filter(i => i.id == itemId)
-  setObject(item)
-
-  }
-  
-  console.log(object)
   return (
     <Router>
-        <Switch>
-          <Route path="/signup">
-            <Signup/>
-          </Route>
-          <Route path="/login">
-            <Login/>
-          </Route>
-          <Route path="/dashboard">
-            <Dashboard state={state} openCart={openCart}/>
-          </Route>
-          <Route path="/productlist">
-            <ProductList items={state.items} openCart={openCart}/>
-          </Route>
-          <Route path={"/product"}>
-            <Product items={state.items[0]}/>
-          </Route>
-          <Route path="/cart">
-            <Cart/>
-          </Route>
-          <Route path="/">
-            <Home/>
-          </Route>
-        </Switch>
+      <Switch>
+        <Route exact path={RouterProvider.getByAlias("home")}>
+          <Dashboard />
+        </Route>
+
+        <Route exact path={RouterProvider.getByAlias("login")}>
+          <Login />
+        </Route>
+
+        <Route exact path={RouterProvider.getByAlias("signup")}>
+          <Signup />
+        </Route>
+
+        <Route exact path={RouterProvider.getByAlias("admin")}>
+          <Home />
+        </Route>
+
+        <Route exact path={RouterProvider.getByAlias("product")}>
+          <Product />
+        </Route>
+
+        <Route exact path={RouterProvider.getByAlias("cart")}>
+          <Cart />
+        </Route>
+
+        <Route exact path={RouterProvider.getByAlias("page404")}>
+          <Page404 />
+        </Route>
+        <Redirect from="*" to={RouterProvider.getByAlias("page404")} />
+      </Switch>
     </Router>
   );
 }
 
 export default App;
-
-
-

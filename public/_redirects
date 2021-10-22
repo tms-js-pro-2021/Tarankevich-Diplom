@@ -1,1 +1,3 @@
+# Redirects for Netlify service
+# Docs here: https://docs.netlify.com/routing/redirects/ 
 /*   /index.html   200
