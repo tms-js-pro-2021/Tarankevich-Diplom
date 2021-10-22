@@ -70,7 +70,7 @@ const Icon = styled.div`
   }
 `;
 
-const Product = (props) => {
+const Product = ({ ...props }) => {
   const [like, setLike] = useState(false);
   const addLike = () => {
     setLike(!like);
@@ -91,7 +91,7 @@ const Product = (props) => {
           <NavLink
             to={RouterProvider.getByAlias("product", { ":id": props.id })}
           >
-            <SearchOutlined></SearchOutlined>
+            <SearchOutlined />
           </NavLink>
         </Icon>
         <Icon>

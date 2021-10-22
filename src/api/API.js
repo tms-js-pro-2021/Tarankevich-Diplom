@@ -1,10 +1,9 @@
 import axios from "axios";
 
 class API {
-  host = "https://tms-js-pro-back-end.herokuapp.com/api";
-
   constructor(token = "") {
     this.token = token;
+    this.host = "https://tms-js-pro-back-end.herokuapp.com/api";
   }
 
   /**
@@ -18,7 +17,7 @@ class API {
    * Get product by id.
    */
   getProduct(id) {
-    return this.publicRequest().get("/ice-hockey-equipment/" + id);
+    return this.publicRequest().get(`/ice-hockey-equipment/${id}`);
   }
 
   /**
@@ -39,7 +38,7 @@ class API {
       baseURL: this.host,
       responseType: "json",
       headers: {
-        Authorization: "Token ${this.token}",
+        Authorization: `Token ${this.token}`,
       },
     });
   }

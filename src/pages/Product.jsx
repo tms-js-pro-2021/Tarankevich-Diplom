@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import styled from "styled-components";
+import { Add, Remove } from "@material-ui/icons";
 import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
-import { Add, Remove } from "@material-ui/icons";
-import styled from "styled-components";
 import API from "../api/API";
 
 const Container = styled.div``;
@@ -118,34 +118,36 @@ class Product extends Component {
   }
 
   componentDidMount() {
-    let api = new API();
-    api.getProduct(this.props.match.params.id).then((response) => {
+    const api = new API();
+    const { match } = this.props;
+    api.getProduct(match.params.id).then((response) => {
       this.setState({ product: response.data });
     });
   }
 
   render() {
+    const { product } = this.state;
     return (
       <Container>
         <Navbar />
         <Announcement />
         <Wrapper>
           <ImgContainer>
-            <Image src={this.state.product.image} />
+            <Image src={product.image} />
           </ImgContainer>
           <InfoContainer>
-            <Title>{this.state.product.name}</Title>
-            <Desc>{this.state.product.description}</Desc>
-            <Price>{this.state.product.price}$</Price>
+            <Title>{product.name}</Title>
+            <Desc>{product.description}</Desc>
+            <Price>{product.price}$</Price>
             <FilterContainer>
               <Filter>
                 <FilterTitle>Color</FilterTitle>
-                <FilterColor color={this.state.product.color} />
+                <FilterColor color={product.color} />
               </Filter>
               <Filter>
                 <FilterTitle>Size</FilterTitle>
                 <FilterSize>
-                  <FilterSizeOption>{this.state.product.size}</FilterSizeOption>
+                  <FilterSizeOption>{product.size}</FilterSizeOption>
                 </FilterSize>
               </Filter>
             </FilterContainer>

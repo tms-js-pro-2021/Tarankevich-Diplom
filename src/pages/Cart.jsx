@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Add, Remove } from "@material-ui/icons";
 import Announcement from "../components/Announcement";
@@ -108,11 +108,6 @@ const ProductPrice = styled.div`
   font-weight: 200;
 `;
 
-const Hr = styled.hr`
-  background-color: #eee;
-  height: 1px;
-`;
-
 const Summary = styled.div`
   flex: 1;
   border: 0.5px solid lightgray;
@@ -144,121 +139,72 @@ const Button = styled.button`
   color: white;
 `;
 
-const Cart = () => {
-  const [plusminus, setPlusMinus] = useState(0);
-  return (
-    <Container>
-      <Navbar />
-      <Announcement />
-      <Wrapper>
-        <Title>YOUR BAG</Title>
-        <Top>
-          <TopButton>CONTINUE SHOPPING</TopButton>
-          <TopTexts>
-            <TopText>Shapping Bag(2)</TopText>
-            <TopText>Your Wishlist</TopText>
-          </TopTexts>
-          <TopButton type="filled">CHECKOUT NOW</TopButton>
-        </Top>
-        <Bottom>
-          <Info>
-            <Product>
-              <ProductDetail>
-                <Image src="https://cdn.shopify.com/s/files/1/0020/1585/4658/products/SKL-CCM-RIBCORE-SILVER-SR-MAIN-8473_68abe300-a38c-4b58-87b2-936c5390a826_360x.jpg?v=1610654549" />
-                <Details>
-                  <ProductName>
-                    <b>Product: </b>Pittsburgh Penguins Home Jersey
-                  </ProductName>
-                  <ProductId>
-                    <b>ID: </b>95422325595
-                  </ProductId>
-                  <ProductColor color="black" />
-                  <ProductSize>
-                    <b>Size: </b>M
-                  </ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  {/* <Add/> */}
-                  <span
-                    style={{ cursor: "pointer" }}
-                    onClick={() => {
-                      setPlusMinus(plusminus + 1);
-                    }}
-                  >
-                    {" "}
-                    +{" "}
-                  </span>
-                  <ProductAmount>{plusminus}</ProductAmount>
-                  <span
-                    style={{ cursor: "pointer" }}
-                    onClick={() => {
-                      if (plusminus > 0) {
-                        setPlusMinus(plusminus - 1);
-                      }
-                    }}
-                  >
-                    {" "}
-                    -{" "}
-                  </span>
-                  {/* <Remove/> */}
-                </ProductAmountContainer>
-                <ProductPrice>$ 79.99</ProductPrice>
-              </PriceDetail>
-            </Product>
-            <Hr />
-            <Product>
-              <ProductDetail>
-                <Image src="https://cdn.shopify.com/s/files/1/0020/1585/4658/products/Knee-Guard-Bauer-Supreme-18-SR-Main-Image6219_400x400.jpg?v=1610650765" />
-                <Details>
-                  <ProductName>
-                    <b>Product: </b>Bauer Supreme Senior Knee & Thigh Pads
-                  </ProductName>
-                  <ProductId>
-                    <b>ID: </b>5252522525252
-                  </ProductId>
-                  <ProductColor color="gray" />
-                  <ProductSize>
-                    <b>Size: </b>M
-                  </ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>1</ProductAmount>
-                  <Remove />
-                </ProductAmountContainer>
-                <ProductPrice>$ 69.97</ProductPrice>
-              </PriceDetail>
-            </Product>
-          </Info>
-          <Summary>
-            <SummaryTitle>ORDER SUMMARY</SummaryTitle>
-            <SummaryItem>
-              <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Estimated Shipping</SummaryItemText>
-              <SummaryItemPrice>$ 4.90</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Shipping Discount</SummaryItemText>
-              <SummaryItemPrice>$ -4.90</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem type="total">
-              <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
-            </SummaryItem>
-            <Button>CHECKOUT NOW</Button>
-          </Summary>
-        </Bottom>
-      </Wrapper>
-      <Footer />
-    </Container>
-  );
-};
+const Cart = () => (
+  <Container>
+    <Navbar />
+    <Announcement />
+    <Wrapper>
+      <Title>YOUR BAG</Title>
+      <Top>
+        <TopButton>CONTINUE SHOPPING</TopButton>
+        <TopTexts>
+          <TopText>Shapping Bag(2)</TopText>
+          <TopText>Your Wishlist</TopText>
+        </TopTexts>
+        <TopButton type="filled">CHECKOUT NOW</TopButton>
+      </Top>
+      <Bottom>
+        <Info>
+          <Product>
+            <ProductDetail>
+              <Image src="https://cdn.shopify.com/s/files/1/0020/1585/4658/products/Knee-Guard-Bauer-Supreme-18-SR-Main-Image6219_400x400.jpg?v=1610650765" />
+              <Details>
+                <ProductName>
+                  <b>Product: </b>Bauer Supreme Senior Knee & Thigh Pads
+                </ProductName>
+                <ProductId>
+                  <b>ID: </b>5252522525252
+                </ProductId>
+                <ProductColor color="gray" />
+                <ProductSize>
+                  <b>Size: </b>M
+                </ProductSize>
+              </Details>
+            </ProductDetail>
+            <PriceDetail>
+              <ProductAmountContainer>
+                <Add />
+                <ProductAmount>1</ProductAmount>
+                <Remove />
+              </ProductAmountContainer>
+              <ProductPrice>$ 69.97</ProductPrice>
+            </PriceDetail>
+          </Product>
+        </Info>
+        <Summary>
+          <SummaryTitle>ORDER SUMMARY</SummaryTitle>
+          <SummaryItem>
+            <SummaryItemText>Subtotal</SummaryItemText>
+            <SummaryItemPrice>$ 80</SummaryItemPrice>
+          </SummaryItem>
+          <SummaryItem>
+            <SummaryItemText>Estimated Shipping</SummaryItemText>
+            <SummaryItemPrice>$ 4.90</SummaryItemPrice>
+          </SummaryItem>
+          <SummaryItem>
+            <SummaryItemText>Shipping Discount</SummaryItemText>
+            <SummaryItemPrice>$ -4.90</SummaryItemPrice>
+          </SummaryItem>
+          <SummaryItem type="total">
+            <SummaryItemText>Total</SummaryItemText>
+            <SummaryItemPrice>$ 80</SummaryItemPrice>
+          </SummaryItem>
+          <Button>CHECKOUT NOW</Button>
+        </Summary>
+      </Bottom>
+    </Wrapper>
+    <Footer />
+  </Container>
+);
 
 export default Cart;

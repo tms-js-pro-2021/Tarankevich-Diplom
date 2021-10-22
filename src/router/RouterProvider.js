@@ -1,8 +1,8 @@
 import routes from "./routes";
 
-class RouterProvider {
-  constructor(routes) {
-    this.routes = routes;
+class Router {
+  constructor(routeList) {
+    this.routes = routeList;
   }
 
   getList() {
@@ -16,12 +16,14 @@ class RouterProvider {
 
     let route = this.routes[alias];
 
-    for (let prop in pathArgs) {
+    Object.keys(pathArgs).forEach((prop) => {
       route = route.replaceAll(prop, pathArgs[prop]);
-    }
+    });
 
     return route;
   }
 }
 
-export default RouterProvider = new RouterProvider(routes);
+const RouterProvider = new Router(routes);
+
+export default RouterProvider;

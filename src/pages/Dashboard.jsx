@@ -15,20 +15,21 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    let api = new API();
+    const api = new API();
     api.getProducts().then((response) => {
       this.setState({ products: response.data });
     });
   }
 
   render() {
+    const {products} = this.state;
     return (
       <div>
         <Announcement />
         <Navbar />
         <Slider />
         <Categories />
-        <Products items={this.state.products} />
+        <Products items={products} />
         <Newsletter />
         <Footer />
       </div>

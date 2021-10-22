@@ -10,14 +10,12 @@ const Container = styled.div`
   grid-row-gap: 2rem;
 `;
 
-const Products = (props) => {
-  return (
-    <Container>
-      {props.items.map((item) => (
-        <Product img={item.image} key={item.id} id={item.id} />
-      ))}
-    </Container>
-  );
-};
+const Products = ({ items }) => (
+  <Container>
+    {items.map((item) => (
+      <Product img={item.image} key={item.id} id={item.id} />
+    ))}
+  </Container>
+);
 
 export default Products;

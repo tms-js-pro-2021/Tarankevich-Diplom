@@ -1,14 +1,14 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
-import { mobile } from "../responsive";
-import { NavLink } from "react-router-dom";
+import Mobile from "../responsive";
 import RouterProvider from "../router/RouterProvider";
 
 const Container = styled.div`
   height: 60px;
-  ${mobile({ backgroundColor: "red" })}
+  ${Mobile({ backgroundColor: "red" })}
 `;
 
 const Wrapper = styled.div`
@@ -62,35 +62,33 @@ const MenuItem = styled.div`
   margin-left: 25px;
 `;
 
-const Navbar = () => {
-  return (
-    <Container>
-      <Wrapper>
-        <Left>
-          <Language>EN</Language>
-          <SearchContainer>
-            <Input />
-            <Search style={{ color: "gray", fontSize: 16 }} />
-          </SearchContainer>
-        </Left>
-        <Center>
-          <Logo>Hockey Shop</Logo>
-        </Center>
-        <Right>
-          <NavLink to={RouterProvider.getByAlias("admin")}>
-            <MenuItem>Admin Panel</MenuItem>
+const Navbar = () => (
+  <Container>
+    <Wrapper>
+      <Left>
+        <Language>EN</Language>
+        <SearchContainer>
+          <Input />
+          <Search style={{ color: "gray", fontSize: 16 }} />
+        </SearchContainer>
+      </Left>
+      <Center>
+        <Logo>Hockey Shop</Logo>
+      </Center>
+      <Right>
+        <NavLink to={RouterProvider.getByAlias("admin")}>
+          <MenuItem>Admin Panel</MenuItem>
+        </NavLink>
+        <MenuItem>
+          <NavLink to={RouterProvider.getByAlias("cart")}>
+            <Badge badgeContent={4} color="primary">
+              <ShoppingCartOutlined />
+            </Badge>
           </NavLink>
-          <MenuItem>
-            <NavLink to={"/cart"}>
-              <Badge badgeContent={4} color="primary">
-                <ShoppingCartOutlined />
-              </Badge>
-            </NavLink>
-          </MenuItem>
-        </Right>
-      </Wrapper>
-    </Container>
-  );
-};
+        </MenuItem>
+      </Right>
+    </Wrapper>
+  </Container>
+);
 
 export default Navbar;
