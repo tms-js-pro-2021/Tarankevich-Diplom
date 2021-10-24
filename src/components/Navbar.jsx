@@ -62,7 +62,7 @@ const MenuItem = styled.div`
   margin-left: 25px;
 `;
 
-const Navbar = () => (
+const Navbar = ({ cart }) => (
   <Container>
     <Wrapper>
       <Left>
@@ -73,7 +73,9 @@ const Navbar = () => (
         </SearchContainer>
       </Left>
       <Center>
-        <Logo>Hockey Shop</Logo>
+        <NavLink to={RouterProvider.getByAlias("home")}>
+          <Logo>Hockey Shop</Logo>
+        </NavLink>
       </Center>
       <Right>
         <NavLink to={RouterProvider.getByAlias("admin")}>
@@ -81,7 +83,7 @@ const Navbar = () => (
         </NavLink>
         <MenuItem>
           <NavLink to={RouterProvider.getByAlias("cart")}>
-            <Badge badgeContent={4} color="primary">
+            <Badge badgeContent={cart.quantity} color="primary">
               <ShoppingCartOutlined />
             </Badge>
           </NavLink>

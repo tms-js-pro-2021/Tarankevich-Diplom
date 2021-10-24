@@ -144,7 +144,7 @@ const Cart = () => (
     <Navbar />
     <Announcement />
     <Wrapper>
-      <Title>YOUR BAG</Title>
+      <Title>YOUR CART</Title>
       <Top>
         <TopButton>CONTINUE SHOPPING</TopButton>
         <TopTexts>
@@ -190,10 +190,6 @@ const Cart = () => (
           <SummaryItem>
             <SummaryItemText>Estimated Shipping</SummaryItemText>
             <SummaryItemPrice>$ 4.90</SummaryItemPrice>
-          </SummaryItem>
-          <SummaryItem>
-            <SummaryItemText>Shipping Discount</SummaryItemText>
-            <SummaryItemPrice>$ -4.90</SummaryItemPrice>
           </SummaryItem>
           <SummaryItem type="total">
             <SummaryItemText>Total</SummaryItemText>

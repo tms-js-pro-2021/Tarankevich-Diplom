@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Registration";
@@ -17,7 +12,7 @@ import RouterProvider from "./router/RouterProvider";
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Switch>
         <Route exact path={RouterProvider.getByAlias("home")}>
           <Dashboard />
@@ -48,7 +43,7 @@ function App() {
         </Route>
         <Redirect from="*" to={RouterProvider.getByAlias("page404")} />
       </Switch>
-    </Router>
+    </BrowserRouter>
   );
 }
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Announcement from "../components/Announcement";
 import Categories from "../components/Categories";
-import Navbar from "../components/Navbar";
+import NavbarContainer from "../components/NavbarContainer";
 import Products from "../components/Products";
 import Slider from "../components/Slider";
 import Newsletter from "../components/Newsletter";
@@ -22,13 +22,13 @@ class Dashboard extends Component {
   }
 
   render() {
-    const {products} = this.state;
+    const { products } = this.state;
     return (
       <div>
         <Announcement />
-        <Navbar />
-        <Slider />
-        <Categories />
+        <NavbarContainer />
+        {/* <Slider />
+        <Categories /> */}
         <Products items={products} />
         <Newsletter />
         <Footer />

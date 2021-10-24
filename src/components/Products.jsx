@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Product from "./Product";
+import ProductContainer from "./ProductContainer";
 
 const Container = styled.div`
   padding: 20px;
@@ -13,7 +13,7 @@ const Container = styled.div`
 const Products = ({ items }) => (
   <Container>
     {items.map((item) => (
-      <Product img={item.image} key={item.id} id={item.id} />
+      <ProductContainer key={item.id} item={item} />
     ))}
   </Container>
 );

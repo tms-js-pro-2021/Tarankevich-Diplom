@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import {
@@ -70,39 +70,24 @@ const Icon = styled.div`
   }
 `;
 
-const Product = ({ ...props }) => {
-  const [like, setLike] = useState(false);
-  const addLike = () => {
-    setLike(!like);
-  };
-  const styleLikedIcon = { color: "red" };
-  const styleIcon = { color: "black" };
-  return (
-    <Container>
-      <Circle />
-      <Image src={props.img} />
-      <Info>
-        <Icon>
-          <NavLink to={RouterProvider.getByAlias("cart")}>
-            <ShoppingCartOutlined />
-          </NavLink>
-        </Icon>
-        <Icon>
-          <NavLink
-            to={RouterProvider.getByAlias("product", { ":id": props.id })}
-          >
-            <SearchOutlined />
-          </NavLink>
-        </Icon>
-        <Icon>
-          <FavoriteBorderOutlined
-            onClick={addLike}
-            style={like ? styleLikedIcon : styleIcon}
-          />
-        </Icon>
-      </Info>
-    </Container>
-  );
-};
+const Product = ({ id, img, addItemToCart }) => (
+  <Container>
+    <Circle />
+    <Image src={img} />
+    <Info>
+      <Icon>
+        <ShoppingCartOutlined onClick={addItemToCart} />
+      </Icon>
+      <Icon>
+        <NavLink to={RouterProvider.getByAlias("product", { ":id": id })}>
+          <SearchOutlined />
+        </NavLink>
+      </Icon>
+      <Icon>
+        <FavoriteBorderOutlined />
+      </Icon>
+    </Info>
+  </Container>
+);
 
 export default Product;
