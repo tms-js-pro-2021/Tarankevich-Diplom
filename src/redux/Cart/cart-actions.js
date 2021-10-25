@@ -1,9 +1,10 @@
 import * as actionTypes from "./cart-types";
 
-const addToCart = (itemId) => ({
+const addToCart = (item, value) => ({
   type: actionTypes.ADD_TO_CART,
   payload: {
-    id: itemId,
+    product: item,
+    quantity: value,
   },
 });
 
@@ -22,4 +23,8 @@ const adjustItemQty = (itemId, value) => ({
   },
 });
 
-export { addToCart, removeFromCart, adjustItemQty };
+const cleanCart = () => ({
+  type: actionTypes.CLEAN_CART,
+});
+
+export { addToCart, removeFromCart, adjustItemQty, cleanCart };

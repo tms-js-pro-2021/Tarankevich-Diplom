@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Signup from "./pages/Registration";
+import Registration from "./pages/Registration";
 import Dashboard from "./pages/Dashboard";
 import Product from "./pages/Product";
 import Cart from "./pages/Cart";
@@ -23,7 +23,7 @@ function App() {
         </Route>
 
         <Route exact path={RouterProvider.getByAlias("signup")}>
-          <Signup />
+          <Registration />
         </Route>
 
         <Route exact path={RouterProvider.getByAlias("admin")}>

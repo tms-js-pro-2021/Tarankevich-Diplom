@@ -27,8 +27,8 @@ class Dashboard extends Component {
       <div>
         <Announcement />
         <NavbarContainer />
-        {/* <Slider />
-        <Categories /> */}
+        <Slider />
+        <Categories />
         <Products items={products} />
         <Newsletter />
         <Footer />

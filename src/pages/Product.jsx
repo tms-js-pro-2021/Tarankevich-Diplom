@@ -1,12 +1,14 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import { Add, Remove } from "@material-ui/icons";
-import Navbar from "../components/Navbar";
+import NavbarContainer from "../components/NavbarContainer";
 import Announcement from "../components/Announcement";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 import API from "../api/API";
+import { addToCart } from "../redux/Cart/cart-actions";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -114,22 +116,46 @@ const Button = styled.button`
 class Product extends Component {
   constructor(props) {
     super(props);
-    this.state = { product: [] };
+    this.state = { product: [], quantity: 1 };
+    this.incrementCount = this.incrementCount.bind(this);
+    this.decrementCount = this.decrementCount.bind(this);
+    this.handleAddItemToCart = this.handleAddItemToCart.bind(this);
   }
 
   componentDidMount() {
     const api = new API();
     const { match } = this.props;
     api.getProduct(match.params.id).then((response) => {
-      this.setState({ product: response.data });
+      this.setState({
+        product: response.data,
+      });
+    });
+  }
+
+  handleAddItemToCart() {
+    const { addProductToCart } = this.props;
+    const { product, quantity } = this.state;
+    addProductToCart(product, quantity);
+  }
+
+  incrementCount() {
+    this.setState({
+      quantity: this.state.quantity + 1,
+    });
+  }
+
+  decrementCount() {
+    let quantity = this.state.quantity - 1;
+    this.setState({
+      quantity: quantity > 0 ? quantity : 1,
     });
   }
 
   render() {
-    const { product } = this.state;
+    const { product, quantity } = this.state;
     return (
       <Container>
-        <Navbar />
+        <NavbarContainer />
         <Announcement />
         <Wrapper>
           <ImgContainer>
@@ -153,11 +179,11 @@ class Product extends Component {
             </FilterContainer>
             <AddContainer>
               <AmountContainer>
-                <Remove />
-                <Amount>1</Amount>
-                <Add />
+                <Remove onClick={this.decrementCount} />
+                <Amount>{quantity}</Amount>
+                <Add onClick={this.incrementCount} />
               </AmountContainer>
-              <Button>ADD TO BAG</Button>
+              <Button onClick={this.handleAddItemToCart}>ADD TO BAG</Button>
             </AddContainer>
           </InfoContainer>
         </Wrapper>
@@ -168,4 +194,11 @@ class Product extends Component {
   }
 }
 
-export default withRouter(Product);
+const mapDispatchToProps = (dispatch) => ({
+  addProductToCart: (product, quantity) => {
+    dispatch(addToCart(product, quantity));
+  },
+});
+
+const ProductWithRouter = withRouter(Product);
+export default connect(null, mapDispatchToProps)(ProductWithRouter);

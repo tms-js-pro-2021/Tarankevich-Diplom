@@ -38,7 +38,6 @@ const Login = () => (
               .max(30, "Password is too long")
               .required("Required"),
           })}
-          // eslint-disable-next-line no-console
           onSubmit={() => console.log("Try to login user!")}
         >
           {({ values, handleChange, handleSubmit, isSubmitting }) => (

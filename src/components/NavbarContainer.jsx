@@ -1,27 +1,15 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import store from "../redux/store";
 import Navbar from "./Navbar";
+import { store } from "../redux/store";
 
 class NavbarContainer extends Component {
   constructor(props) {
     super(props);
+    this.store = store;
+    this.getCurrentStateFromStore = this.getCurrentStateFromStore.bind(this);
+    this.updateStateFromStore = this.updateStateFromStore.bind(this);
     this.state = this.getCurrentStateFromStore();
   }
-
-  getCurrentStateFromStore() {
-    return {
-      cart: store.getState().shop.cart,
-    };
-  }
-
-  updateStateFromStore = () => {
-    const currentState = this.getCurrentStateFromStore();
-
-    if (this.state !== currentState) {
-      this.setState(currentState);
-    }
-  };
 
   componentDidMount() {
     this.unsubscribeStore = store.subscribe(this.updateStateFromStore);
@@ -29,6 +17,20 @@ class NavbarContainer extends Component {
 
   componentWillUnmount() {
     this.unsubscribeStore();
+  }
+
+  getCurrentStateFromStore() {
+    return {
+      cart: this.store.getState().shop.cart,
+    };
+  }
+
+  updateStateFromStore() {
+    const currentState = this.getCurrentStateFromStore();
+
+    if (this.state !== currentState) {
+      this.setState(currentState);
+    }
   }
 
   render() {

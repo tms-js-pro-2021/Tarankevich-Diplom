@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Product from "./Product";
-import { adjustItemQty } from "../redux/Cart/cart-actions";
+import { addToCart } from "../redux/Cart/cart-actions";
 
 class ProductContainer extends Component {
   constructor(props) {
@@ -10,8 +10,8 @@ class ProductContainer extends Component {
   }
 
   handleAddItemToCart() {
-    const { item, addItemToCart } = this.props;
-    return addItemToCart(item.id, 1);
+    const { item, addProductToCart } = this.props;
+    return addProductToCart(item, 1);
   }
 
   render() {
@@ -28,8 +28,8 @@ class ProductContainer extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  addItemToCart: (itemId, quantity) => {
-    dispatch(adjustItemQty(itemId, quantity));
+  addProductToCart: (product, quantity) => {
+    dispatch(addToCart(product, quantity));
   },
 });
 
