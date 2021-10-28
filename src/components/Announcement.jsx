@@ -1,6 +1,5 @@
 import React from "react";
-import styled from "styled-components"
-
+import styled from "styled-components";
 
 const Container = styled.div`
   height: 30px;
@@ -13,12 +12,10 @@ const Container = styled.div`
   font-weight: 500;
 `;
 
-const Announcement = () => {
-  return (
-    <Container>
-      Супер акция! Бесплатная доставка при заказе от 50 долларов США
-    </Container>
-  )
-}
+const Announcement = () => (
+  <Container>
+    Супер акция! Бесплатная доставка при заказе от 50 долларов США
+  </Container>
+);
 
-export default Announcement
+export default Announcement;

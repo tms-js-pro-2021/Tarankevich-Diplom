@@ -1,44 +1,33 @@
 import React from "react";
-import Axios from "axios";
+import * as Yup from "yup";
+import { Formik, Form } from "formik";
+import { FiMail, FiLock } from "react-icons/fi";
+import Loader from "react-loader-spinner";
+import { TextInput } from "../components/FormLib";
+import Logo from "../assets/logo.jpg";
+import RouterProvider from "../router/RouterProvider";
 import {
-  StyledTextInput,
   StyledFormArea,
   StyledFormButton,
-  StyledLabel,
+  StyledContainer,
   Avatar,
   StyledTitle,
   colors,
   ButtonGroup,
   ExtraText,
   TextLink,
-} from "./../components/Styles";
+} from "../components/Styles";
 
-import Logo from "./../assets/logo.jpg";
-
-import { Formik, Form } from "formik";
-import { TextInput } from "../components/FormLib";
-import * as Yup from "yup";
-
-import { FiMail, FiLock } from "react-icons/fi";
-
-import Loader from "react-loader-spinner";
-
-import { connect } from "react-redux";
-import { loginUser } from "./../auth/actions/userActions";
-import { useHistory } from "react-router-dom";
-import { StyledContainer } from "../components/Styles";
-
-const Login = () => {
-  return (
-    <StyledContainer>
+const Login = () => (
+  <StyledContainer>
     <div>
       <StyledFormArea>
         <Avatar image={Logo} />
-        <StyledTitle color={colors.theme} size={30}></StyledTitle>
+        <StyledTitle color={colors.theme} size={30} />
         <Formik
           initialValues={{
-            email: "dima@gmail.com",
-            password: "test123",
+            email: "",
+            password: "",
           }}
           validationSchema={Yup.object({
             email: Yup.string()
@@ -49,25 +38,15 @@ const Login = () => {
               .max(30, "Password is too long")
               .required("Required"),
           })}
-          onSubmit={(values, { setSubmitting, setFieldError }) => {
-            loginUser(Axios, values, history, setFieldError, setSubmitting);
-          }}
+          onSubmit={() => console.log("Try to login user!")}
         >
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            isSubmitting,
-          }) => (
+          {({ values, handleChange, handleSubmit, isSubmitting }) => (
             <Form onSubmit={handleSubmit}>
               <TextInput
                 name="email"
                 type="text"
                 label="Email"
-                placeholder="Dtarankevich@mail.ru"
+                placeholder="Enter email address"
                 icon={<FiMail />}
                 onChange={handleChange}
                 value={values.email}
@@ -76,7 +55,7 @@ const Login = () => {
                 name="password"
                 type="password"
                 label="Password"
-                placeholder="********"
+                placeholder="Enter password"
                 icon={<FiLock />}
                 onChange={handleChange}
                 value={values.password}
@@ -99,15 +78,12 @@ const Login = () => {
           )}
         </Formik>
         <ExtraText>
-          New here? <TextLink to="/signup">Signup</TextLink>
+          New here?{" "}
+          <TextLink to={RouterProvider.getByAlias("signup")}>Signup</TextLink>
         </ExtraText>
       </StyledFormArea>
     </div>
-    </StyledContainer>
-
-  );
-};
+  </StyledContainer>
+);
 
 export default Login;
-
-// connect(null, {loginUser})(Login)

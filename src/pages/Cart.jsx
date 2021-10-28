@@ -1,79 +1,82 @@
-import { Add, Remove } from "@material-ui/icons";
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { Add, Remove, Delete } from "@material-ui/icons";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-import { useState } from "react";
-
+import NavbarContainer from "../components/NavbarContainer";
+import RouterProvider from "../router/RouterProvider";
+import {
+  adjustItemQty,
+  removeFromCart,
+  cleanCart,
+} from "../redux/Cart/cart-actions";
 
 const Container = styled.div``;
 
 const Wrapper = styled.div`
-padding: 20px;
+  padding: 20px;
 `;
 
 const Title = styled.h1`
-font-weight: 300;
-text-align: center;
+  font-weight: 300;
+  text-align: center;
 `;
 
 const Top = styled.div`
-display: flex;
-align-items: center;
-justify-content:space-between;
-padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
 `;
 
 const TopButton = styled.button`
-padding: 10px;
-font-weight: 600;
-cursor: pointer;
-border: ${props=>props.type === "filled" && "none"};
-background-color: ${props=>props.type === "filled" ? "black" : "transparent"};
-color: ${props=>props.type === "filled" && "white"};
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  border: ${(props) => props.type === "filled" && "none"};
+  background-color: ${(props) =>
+    props.type === "filled" ? "black" : "transparent"};
+  color: ${(props) => props.type === "filled" && "white"};
 `;
 
 const TopTexts = styled.div``;
 
 const TopText = styled.span`
-text-decoration: underline;
-cursor: pointer;
-margin: 0px 10px;
+  text-decoration: underline;
+  cursor: pointer;
+  margin: 0px 10px;
 `;
-
-
 
 const Bottom = styled.div`
-display: flex;
-justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 `;
 
-
-
 const Info = styled.div`
-flex: 3;
+  flex: 3;
 `;
 
 const Product = styled.div`
-display: flex;
-justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const ProductDetail = styled.div`
-flex: 2;
-display: flex;
+  flex: 2;
+  display: flex;
 `;
 
 const Image = styled.img`
-width: 200px;
+  width: 200px;
 `;
 
 const Details = styled.div`
-padding: 20px;
-display:flex;
-flex-direction: column;
-justify-content: space-around;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 `;
 
 const ProductName = styled.span``;
@@ -81,165 +84,201 @@ const ProductName = styled.span``;
 const ProductId = styled.span``;
 
 const ProductColor = styled.div`
-width: 20px;
-height: 20px;
-border-radius: 50%;
-background-color: ${props=>props.color};
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: ${(props) => props.color};
 `;
 
 const ProductSize = styled.span``;
 
 const PriceDetail = styled.div`
-flex: 1;
-display: flex;
-align-items: center;
-flex-direction: column;
-justify-content: center;
-
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const ProductAmountContainer = styled.div`
-display: flex;
-align-items: center;
-margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 `;
 
 const ProductAmount = styled.div`
-font-size: 24px;
-margin: 5px;
+  font-size: 24px;
+  margin: 5px;
 `;
 
 const ProductPrice = styled.div`
-font-size: 30px;
-font-weight: 200;
-`;
-
-const Hr = styled.hr`
-background-color: #eee;
-height: 1px;
+  font-size: 30px;
+  font-weight: 200;
 `;
 
 const Summary = styled.div`
-flex:1;
-border: 0.5px solid lightgray;
-border-radius: 10px;
-padding: 20px;
-height: 50vh;
+  flex: 1;
+  border: 0.5px solid lightgray;
+  border-radius: 10px;
+  padding: 20px;
 `;
 
 const SummaryTitle = styled.h1`
-font-weight: 300;
+  font-weight: 300;
 `;
 
 const SummaryItem = styled.div`
-margin: 30px 0px;
-display: flex;
-justify-content: space-between;
-font-weight: ${props=>props.type === "total" && "500"};
-font-size: ${props=>props.type === "total" && "24px"};
+  margin: 30px 0px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: ${(props) => props.type === "total" && "500"};
+  font-size: ${(props) => props.type === "total" && "24px"};
+`;
+
+const Button = styled.button`
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+  color: white;
 `;
 
 const SummaryItemText = styled.span``;
-
 const SummaryItemPrice = styled.span``;
 
-const Button = styled.button`
-width: 100%;
-padding: 10px;
-background-color: black;
-color: white;
+class Cart extends Component {
+  constructor(props) {
+    super(props);
+    this.removeItemFromCart = this.removeItemFromCart.bind(this);
+    this.incrementCount = this.incrementCount.bind(this);
+    this.buy = this.buy.bind(this);
+    this.cleanCart = this.cleanCart.bind(this);
+  }
 
-`;
+  buy() {
+    this.cleanCart();
+    alert("Thank you for your order!");
+  }
 
+  cleanCart() {
+    const { removeAllItemsFromCart } = this.props;
+    removeAllItemsFromCart();
+  }
 
+  incrementCount(itemId) {
+    const { adjustProductCart } = this.props;
+    adjustProductCart(itemId, 1);
+  }
 
+  decrementCount(itemId) {
+    const { adjustProductCart } = this.props;
+    adjustProductCart(itemId, -1);
+  }
 
-const Cart = () => {
-  const [plusminus, setPlusMinus] = useState(0)
-  return (
-    <Container>
-      <Navbar/>
-      <Announcement/>
-      <Wrapper>
-        <Title>YOUR BAG</Title>
-        <Top>
-          <TopButton>CONTINUE SHOPPING</TopButton>
-          <TopTexts>
-            <TopText>Shapping Bag(2)</TopText>
-            <TopText>Your Wishlist</TopText>
-          </TopTexts>
-          <TopButton type = "filled">CHECKOUT NOW</TopButton>
-        </Top>
-        <Bottom>
-          <Info>
-            <Product>
-              <ProductDetail>
-                <Image src="https://cdn.shopify.com/s/files/1/0020/1585/4658/products/SKL-CCM-RIBCORE-SILVER-SR-MAIN-8473_68abe300-a38c-4b58-87b2-936c5390a826_360x.jpg?v=1610654549"/>
-                <Details>
-                  <ProductName><b>Product: </b>Pittsburgh Penguins Home Jersey</ProductName>
-                  <ProductId><b>ID: </b>95422325595</ProductId>
-                  <ProductColor color="black"/>
-                  <ProductSize><b>Size: </b>M</ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  {/* <Add/> */}
-                  <span style={{cursor: "pointer"}} onClick={()=> {setPlusMinus(plusminus+1)}}> + </span>
-                  <ProductAmount>{plusminus}</ProductAmount>
-                  <span style={{cursor: "pointer"}} onClick={()=> {if(plusminus>0){setPlusMinus(plusminus-1)}}}> - </span>
-                  {/* <Remove/> */}
-                </ProductAmountContainer>
-                <ProductPrice>$ 79.99</ProductPrice>
-              </PriceDetail>
-            </Product>
-            <Hr/>
-            <Product>
-              <ProductDetail>
-                <Image src="https://cdn.shopify.com/s/files/1/0020/1585/4658/products/Knee-Guard-Bauer-Supreme-18-SR-Main-Image6219_400x400.jpg?v=1610650765"/>
-                <Details>
-                  <ProductName><b>Product: </b>Bauer Supreme Senior Knee & Thigh Pads</ProductName>
-                  <ProductId><b>ID: </b>5252522525252</ProductId>
-                  <ProductColor color="gray"/>
-                  <ProductSize><b>Size: </b>M</ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <Add/>
-                  <ProductAmount>1</ProductAmount>
-                  <Remove/>
-                </ProductAmountContainer>
-                <ProductPrice>$ 69.97</ProductPrice>
-              </PriceDetail>
-            </Product>
-          </Info>
-          <Summary>
-            <SummaryTitle>ORDER SUMMARY</SummaryTitle>
-            <SummaryItem>
-              <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Estimated Shipping</SummaryItemText>
-              <SummaryItemPrice>$ 4.90</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Shipping Discount</SummaryItemText>
-              <SummaryItemPrice>$ -4.90</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem type = "total">
-              <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
-            </SummaryItem>
-            <Button>CHECKOUT NOW</Button>
-          </Summary>
-        </Bottom>
-      </Wrapper>
-      <Footer/>
-    </Container>
-  )
+  removeItemFromCart(itemId) {
+    const { removeProductFromCart } = this.props;
+    removeProductFromCart(itemId);
+  }
+
+  render() {
+    const { items, cart } = this.props;
+    let totalPrice = 0;
+    return (
+      <Container>
+        <NavbarContainer />
+        <Announcement />
+        <Wrapper>
+          <Title>YOUR CART</Title>
+          <Top>
+            <NavLink to={RouterProvider.getByAlias("home")}>
+              <TopButton>CONTINUE SHOPPING</TopButton>
+            </NavLink>
+            <TopButton onClick={this.cleanCart}>CLEAN CART</TopButton>
+            <TopTexts>
+              <TopText>Shapping Bag({cart.quantity})</TopText>
+              <TopText>Your Wishlist</TopText>
+            </TopTexts>
+          </Top>
+          <Bottom>
+            <Info>
+              {items.length > 0 ? (
+                items.map((item, index) => {
+                  totalPrice += item.totalPrice;
+                  return (
+                    <Product key={index}>
+                      <ProductDetail>
+                        <Image src={item.image} />
+                        <Details>
+                          <ProductName>
+                            <b>Product: </b>
+                            {item.name}
+                          </ProductName>
+                          <ProductId>
+                            <b>ID: </b>
+                            {item.id}
+                          </ProductId>
+                          <ProductColor color={item.color} />
+                          <ProductSize>
+                            <b>Size: </b>
+                            {item.size}
+                          </ProductSize>
+                        </Details>
+                      </ProductDetail>
+                      <PriceDetail>
+                        <ProductAmountContainer>
+                          <Add onClick={() => this.incrementCount(item.id)} />
+                          <ProductAmount>{item.quantity}</ProductAmount>
+                          <Remove
+                            onClick={() => this.decrementCount(item.id)}
+                          />
+                        </ProductAmountContainer>
+                        <ProductPrice>$ {item.totalPrice}</ProductPrice>
+                        <button
+                          onClick={() => this.removeItemFromCart(item.id)}
+                          type="button"
+                        >
+                          <Delete /> Remove
+                        </button>
+                      </PriceDetail>
+                    </Product>
+                  );
+                })
+              ) : (
+                <h1>Cart is empty</h1>
+              )}
+            </Info>
+            <Summary>
+              <SummaryTitle>ORDER SUMMARY</SummaryTitle>
+              <SummaryItem type="total">
+                <SummaryItemText>Total</SummaryItemText>
+                <SummaryItemPrice>$ {totalPrice}</SummaryItemPrice>
+              </SummaryItem>
+              <Button onClick={this.buy}>CHECKOUT NOW</Button>
+            </Summary>
+          </Bottom>
+        </Wrapper>
+        <Footer />
+      </Container>
+    );
+  }
 }
 
+const mapStateToProps = (state) => ({
+  items: state.shop.cart.products,
+  cart: {
+    quantity: state.shop.cart.quantity,
+  },
+});
 
-export default Cart
+const mapDispatchToProps = (dispatch) => ({
+  removeProductFromCart: (product, quantity) => {
+    dispatch(removeFromCart(product, quantity));
+  },
+  adjustProductCart: (itemId, quantity) => {
+    dispatch(adjustItemQty(itemId, quantity));
+  },
+  removeAllItemsFromCart: () => {
+    dispatch(cleanCart());
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

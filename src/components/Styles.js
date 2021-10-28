@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import background from "../assets/bg.jpg";
-import {Link} from "react-router-dom";
 
 export const colors = {
   primary: "#000000",
@@ -11,7 +11,7 @@ export const colors = {
   dark2: "#4B5563",
   dark3: "#9CA3AF",
   red: "#00BFFF",
-  aliceblue: "#F0F8FF"
+  aliceblue: "#F0F8FF",
 };
 
 export const StyledContainer = styled.div`
@@ -27,24 +27,9 @@ export const StyledContainer = styled.div`
   font-size: 60px;
   font-family: "Roboto", sans-serif;
   color: black;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   text-transform: capitalize;
 `;
-// export const StyleDashboard = styled.div`
-//   margin: 0;
-//   min-height: 100vh;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   background-size: cover;
-//   background-attachment: fixed;
-//   font-size: 60px;
-//   font-family: "Roboto", sans-serif;
-//   color: black;
-//   text-shadow: 0 2px 5px rgba(0, 0, 0, .2);
-//   text-transform: capitalize;
-// `;
-
 
 export const StyledTitle = styled.h2`
   font-size: ${(props) => props.size}px;
@@ -57,16 +42,16 @@ export const StyledTitle = styled.h2`
 export const StyledSubTitle = styled.p`
   font-size: ${(props) => props.size}px;
   text-align: center;
-  color: ${(props) => props.color ? props.color : colors.primary};
+  color: ${(props) => (props.color ? props.color : colors.primary)};
   padding: 5px;
   margin-bottom: 25px;
 `;
 
-export const Avatar = styled.div `
+export const Avatar = styled.div`
   width: 85px;
   height: 85px;
   border-radius: 50px;
-  background-image: url(${props => props.image});
+  background-image: url(${(props) => props.image});
   background-size: cover;
   background-position: center;
   margin: auto;
@@ -79,16 +64,16 @@ export const StyledButton = styled(Link)`
   font-size: 16px;
   border: 3px solid ${colors.aliceblue};
   border-radius: 25px;
-  color:${colors.aliceblue};
+  color: ${colors.aliceblue};
   text-decoration: none;
   text-align: center;
   transition: ease-in-out 0.3s;
 
-&:hover{
-  background-color: ${colors.light1};
-  color: ${colors.primary};
-  cursor: pointer;
-}
+  &:hover {
+    background-color: ${colors.light1};
+    color: ${colors.primary};
+    cursor: pointer;
+  }
 `;
 
 export const ButtonGroup = styled.div`
@@ -108,51 +93,51 @@ export const StyledTextInput = styled.input`
   color: ${colors.dark1};
   background-color: transparent;
   background-color: ${colors.light2};
-  border-radius:60px;
+  border-radius: 60px;
   outline: 0;
   display: block;
   margin: 5px auto 10px auto;
   transition: ease-in-out 0.3s;
 
-${(props)=> props.invalid && 
-  `background-color: ${colors.red}; color: ${colors.primary};`}
+  ${(props) =>
+    props.invalid &&
+    `background-color: ${colors.red}; color: ${colors.primary};`}
 
-&:focus {
-  background-color: ${colors.dark2};
-  color: ${colors.primary};
-}
+  &:focus {
+    background-color: ${colors.dark2};
+    color: ${colors.primary};
+  }
 `;
 
 export const StyledLabel = styled.p`
-  text-align:left;
+  text-align: left;
   font-size: 13px;
   font-weight: bold;
-  color:${colors.aliceblue}
+  color: ${colors.aliceblue};
 `;
 
 export const StyledFormArea = styled.div`
-  background-color: ${props => props.bg ||
-  colors.light1}; 
+  background-color: ${(props) => props.bg || colors.light1};
   text-align: center;
   padding: 45px 55px;
   background-color: transparent;
 `;
 
 export const StyledFormButton = styled.button`
-padding: 10px;
+  padding: 10px;
   width: 150px;
   background-color: transparent;
   font-size: 16px;
   border: 2px solid ${colors.theme};
   border-radius: 25px;
-  color:${colors.theme};
+  color: ${colors.theme};
   transition: ease-in-out 0.3s;
 
-&:hover{
-  background-color: ${colors.theme};
-  color: ${colors.primary};
-  cursor: pointer;
-}
+  &:hover {
+    background-color: ${colors.theme};
+    color: ${colors.primary};
+    cursor: pointer;
+  }
 `;
 
 export const ErrorMsg = styled.div`
@@ -164,7 +149,7 @@ export const ErrorMsg = styled.div`
 `;
 
 export const ExtraText = styled.p`
-  font-size:${(props) => props.size}15px;
+  font-size: ${(props) => props.size}15px;
   text-align: center;
   color: ${colors.aliceblue};
   padding: 2px;
@@ -172,16 +157,15 @@ export const ExtraText = styled.p`
 `;
 
 export const TextLink = styled(Link)`
-text-decoration: none;
-color: ${colors.theme};
-transition: ease-in-out 0.3s;
+  text-decoration: none;
+  color: ${colors.theme};
+  transition: ease-in-out 0.3s;
 
-&:hover { 
-  text-decoration: underline;
-  letter-spacing: 2px;
-  font-weight: bold;
-
-}
+  &:hover {
+    text-decoration: underline;
+    letter-spacing: 2px;
+    font-weight: bold;
+  }
 `;
 
 export const StyledIcon = styled.p`
